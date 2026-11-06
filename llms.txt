@@ -1,0 +1,21 @@
+# SAMAHITA (समाहित)
+
+> A proof-first calendar of vrata, katha and parva from the Narada Purana. Every date and every entry points to its book page and the exact lines it was read from. Text is in Hindi (Devanagari); summaries have English alongside.
+
+Source book: संक्षिप्त नारदपुराण, Gita Press, Gorakhpur (#1183). Scan: Sarvagya Sharda Peeth. The book is not public domain; this site quotes lines for study and reference and links every quote to its scan.
+Made by Angad Jangir. Not affiliated with Gita Press.
+
+## Key pages
+- [Today / आज](https://angadseth.github.io/samahita/): tithi, sunrise and the day's vrata, computed on the device
+- [Panchang calendar](https://angadseth.github.io/samahita/panchang/): monthly calendar with the book's vrata-nirnaya rules applied
+- [All vrata](https://angadseth.github.io/samahita/vrat/): 2512 entries from 170 of 173 chapters so far
+- [Katha](https://angadseth.github.io/samahita/katha/), [Parva](https://angadseth.github.io/samahita/parva/), [Tithi](https://angadseth.github.io/samahita/tithi/), [Granth (the book)](https://angadseth.github.io/samahita/granth/), [Search](https://angadseth.github.io/samahita/khoj/)
+- [How it was made / यह कैसे बना](https://angadseth.github.io/samahita/vidhi/): method, verification tiers, comparison with Drik Panchang, known limits
+- [Coverage / व्याप्ति](https://angadseth.github.io/samahita/vyapti/): honest counts of what is done
+- [Privacy / निजता](https://angadseth.github.io/samahita/niji/), [About / परिचय](https://angadseth.github.io/samahita/parichay/), [Changelog / बदलाव](https://angadseth.github.io/samahita/badlav/)
+- [Sitemap](https://angadseth.github.io/samahita/sitemap.xml)
+
+## Data provenance
+- Line geometry comes only from a layout detector run on the scanned pages. Text comes only from proofread OCR. Entries quote the book verbatim and cite line ids; no line is created by a language model.
+- Entries marked समीक्षाधीन (under review) have not yet had a human check.
+- Dates are computed with astronomy-engine and the book's own nirnaya rules; they match Drik Panchang within about a minute for tithi times, and every date difference is traced to a stated book rule.

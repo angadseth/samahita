@@ -1,0 +1,296 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://angadseth.github.io/samahita/daypack/daypack.schema.json",
+  "title": "Samahita day pack v1",
+  "description": "One city's precomputed panchang days for the Android widgets. Times are UTC epoch seconds unless marked local.",
+  "type": "object",
+  "required": [
+    "schema",
+    "version",
+    "generated",
+    "city",
+    "from",
+    "to",
+    "vr",
+    "days"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "hm": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9]{2}:[0-9]{2}$"
+    },
+    "epoch": {
+      "type": "integer",
+      "minimum": 1500000000
+    },
+    "masa": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 11
+        },
+        {
+          "enum": [
+            0,
+            1
+          ]
+        }
+      ],
+      "items": false,
+      "minItems": 2
+    }
+  },
+  "properties": {
+    "schema": {
+      "const": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{12}$"
+    },
+    "generated": {
+      "$ref": "#/$defs/date"
+    },
+    "city": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "hi",
+        "en",
+        "lat",
+        "lon",
+        "tz"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "hi": {
+          "type": "string"
+        },
+        "en": {
+          "type": "string"
+        },
+        "lat": {
+          "type": "number"
+        },
+        "lon": {
+          "type": "number"
+        },
+        "tz": {
+          "type": "string"
+        }
+      }
+    },
+    "from": {
+      "$ref": "#/$defs/date"
+    },
+    "to": {
+      "$ref": "#/$defs/date"
+    },
+    "vr": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "s",
+          "h",
+          "e",
+          "y",
+          "d"
+        ],
+        "properties": {
+          "s": {
+            "type": "string",
+            "description": "slug, site page /vrat/<s>/"
+          },
+          "h": {
+            "type": "string",
+            "description": "title, Hindi"
+          },
+          "e": {
+            "type": "string",
+            "description": "title, English"
+          },
+          "y": {
+            "type": "string",
+            "description": "type: vrata, puja, dana, ..."
+          },
+          "d": {
+            "type": "string",
+            "description": "one-line Hindi summary"
+          },
+          "m": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 11,
+            "description": "masa index when the vidhan belongs to one month"
+          }
+        }
+      }
+    },
+    "days": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "d",
+          "v",
+          "sr",
+          "ss",
+          "mr",
+          "t",
+          "te",
+          "nk",
+          "ne",
+          "ma",
+          "mp",
+          "il",
+          "el",
+          "it"
+        ],
+        "properties": {
+          "d": {
+            "$ref": "#/$defs/date"
+          },
+          "v": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 7,
+            "description": "vara, 1 = Sunday"
+          },
+          "sr": {
+            "$ref": "#/$defs/hm",
+            "description": "sunrise, local"
+          },
+          "ss": {
+            "$ref": "#/$defs/hm",
+            "description": "sunset, local"
+          },
+          "mr": {
+            "$ref": "#/$defs/hm",
+            "description": "moonrise, local"
+          },
+          "t": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 30,
+            "description": "tithi at sunrise; 16-30 krishna"
+          },
+          "te": {
+            "$ref": "#/$defs/epoch",
+            "description": "tithi end"
+          },
+          "nk": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 27
+          },
+          "ne": {
+            "$ref": "#/$defs/epoch",
+            "description": "nakshatra end"
+          },
+          "ma": {
+            "$ref": "#/$defs/masa",
+            "description": "amanta masa index, adhika"
+          },
+          "mp": {
+            "$ref": "#/$defs/masa",
+            "description": "purnimanta masa index, adhika"
+          },
+          "il": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "moon illuminated fraction"
+          },
+          "el": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 360,
+            "description": "elongation degrees"
+          },
+          "it": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "description": "indices into vr, vratas first"
+          },
+          "ek": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "n",
+                "r",
+                "pd",
+                "pf",
+                "pt"
+              ],
+              "properties": {
+                "n": {
+                  "enum": [
+                    11,
+                    26
+                  ]
+                },
+                "r": {
+                  "enum": [
+                    "g",
+                    "v",
+                    "b"
+                  ],
+                  "description": "grihastha / virakta / both"
+                },
+                "pd": {
+                  "$ref": "#/$defs/date",
+                  "description": "parana date"
+                },
+                "pf": {
+                  "$ref": "#/$defs/epoch"
+                },
+                "pt": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/$defs/epoch"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "l": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "ap": {
+            "const": 1,
+            "description": "sunrise values approximate (polar fallback)"
+          }
+        }
+      }
+    }
+  }
+}

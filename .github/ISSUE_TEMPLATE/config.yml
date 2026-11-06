@@ -1,0 +1,6 @@
+# Blank issues stay on: the site's "त्रुटि बताएँ" link opens a prefilled blank issue.
+blank_issues_enabled: true
+contact_links:
+  - name: Samahita
+    url: https://angadseth.github.io/samahita/
+    about: वेबसाइट — the website
